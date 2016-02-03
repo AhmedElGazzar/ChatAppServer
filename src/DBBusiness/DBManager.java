@@ -1,5 +1,6 @@
 /*
     DBManager to connect to MySQL database 
+        using Singletone design pattern
  */
 package DBBusiness;
 
@@ -23,7 +24,6 @@ public class DBManager
     {
         
     }
-
     //Thread safe instatiate method
     public static synchronized DBManager getInstance() {
         if(_instance == null)

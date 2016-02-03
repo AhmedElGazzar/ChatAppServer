@@ -1,9 +1,9 @@
 /*
     ClientInfo class implements Serializable
-        to deal with database
-            to deal with object
+        deal with database ( tabale ClientInfo )
+            to work with object
  */
-package server.db;
+package chat.server.commons;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
  *
  * @author ElGazzar
  */
-public class ClientInfo implements Serializable{
+public class ClientInform implements Serializable{
     
     private int ID;
     private String fName;
@@ -22,8 +22,8 @@ public class ClientInfo implements Serializable{
     private String userName;
     private String email;
     private String password;
-    String birthDate;
-    private int telephone;
+    private String birthDate;
+    private String telephone;
     private String address;
     private Date creationDate;
     private Date lastLogin;
@@ -36,9 +36,9 @@ public class ClientInfo implements Serializable{
     private String ip;
     private String port;
     
-    public ClientInfo(){}
-    public ClientInfo(String _fName, String _lName, String _userName, String _email, String _password,
-            String _birthDate, int _telephone,String _address, ImageIcon _profileImage, 
+    public ClientInform(){}
+    public ClientInform(String _fName, String _lName, String _userName, String _email, String _password,
+            String _birthDate, String _telephone,String _address, ImageIcon _profileImage, 
             String _gender,String _country, String _txtstatus) {
         this.fName = _fName;
         this.lName = _lName;
@@ -101,11 +101,11 @@ public class ClientInfo implements Serializable{
         this.password = password;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 

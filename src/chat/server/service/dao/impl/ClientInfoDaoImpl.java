@@ -1,32 +1,30 @@
 /*
-    ClientInfoImpl to implement all abstract methods from ClientInfoInterface
+ * ClientInfoDaoImpl class implements ClientInfoDao
  */
-package DBBusiness;
+package chat.server.service.dao.impl;
 
+import DBBusiness.DBManager;
+import chat.server.commons.ClientInform;
+import chat.server.service.dao.ClientInfoDao;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Blob;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import server.db.ClientInfo;
-import server.db.ClientInfoInterface;
 
 /**
  *
  * @author ElGazzar
  */
-public class DBHandler extends UnicastRemoteObject implements ClientInfoInterface{
-
+public class ClientInfoDaoImpl extends UnicastRemoteObject implements ClientInfoDao
+{
     DBManager dbConnection = null;
-    public DBHandler() throws RemoteException
+    public ClientInfoDaoImpl() throws RemoteException
     {
     }
     
@@ -61,7 +59,7 @@ public class DBHandler extends UnicastRemoteObject implements ClientInfoInterfac
     }
     
     @Override
-    public boolean insert(ClientInfo c){
+    public boolean insert(ClientInform c){
         
         if(!validEmail(c.getEmail()))
         {
@@ -122,7 +120,7 @@ public class DBHandler extends UnicastRemoteObject implements ClientInfoInterfac
     }
 
     @Override
-    public boolean update(ClientInfo c){
+    public boolean update(ClientInform c){
         if(!validEmail(c.getEmail()))
         {
             try{
@@ -145,7 +143,7 @@ public class DBHandler extends UnicastRemoteObject implements ClientInfoInterfac
                 pstm.setString(2, c.getlName());
                 pstm.setString(3, c.getUserName());
                 pstm.setString(4, c.getPassword());
-                pstm.setInt(5, c.getTelephone());
+                pstm.setString(5, c.getTelephone());
                 pstm.setString(6, c.getAddress());
                 pstm.setBlob(7, (Blob) c.getProfileImage());
                 pstm.setString(8, c.getGender());
@@ -172,7 +170,7 @@ public class DBHandler extends UnicastRemoteObject implements ClientInfoInterfac
     }
 
     @Override
-    public boolean delete(ClientInfo c) throws RemoteException {
+    public boolean delete(ClientInform c) throws RemoteException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -187,6 +185,5 @@ public class DBHandler extends UnicastRemoteObject implements ClientInfoInterfac
     }
 
    
-
     
 }

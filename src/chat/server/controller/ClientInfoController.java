@@ -1,29 +1,26 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * ClientInfoController class 
+    is represent controling ClientInfoDaoImpl 
  */
-package chatappprojectserver;
+package chat.server.controller;
 
-import DBBusiness.DBHandler;
+import chat.server.service.dao.impl.ClientInfoDaoImpl;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author ElGazzar
  */
-public class ChatAppServer {
-
+public class ClientInfoController 
+{
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         try {
-            DBHandler db = new DBHandler();
+            ClientInfoDaoImpl db = new ClientInfoDaoImpl();
             Registry reg = LocateRegistry.createRegistry(1111);
             reg.rebind("Service", db);
             
